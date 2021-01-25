@@ -1,8 +1,11 @@
 const fs = require('fs')
 const chalk = require('chalk')
 
+//Listing All the note
 const getNotes = () => {
-    return 'Your notes...'
+    const notes = loadNotes()
+    console.log(chalk.yellow.inverse('Your notes...'))
+    notes.map((note) => console.log(note.title))
 }
 
 //Create New Note
