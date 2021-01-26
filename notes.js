@@ -1,7 +1,7 @@
 const fs = require('fs')
 const chalk = require('chalk')
 
-//Listing All the note
+//List All Notes
 const getNotes = () => {
     const notes = loadNotes()
     console.log(chalk.yellow.inverse('Your notes...'))
@@ -34,6 +34,7 @@ const saveNotes = (notes) => {
     fs.writeFileSync('notes.json', dataJson)
 }
 
+//Load All Notes
 const loadNotes = () => {
     try{
         //If file exist
@@ -60,9 +61,21 @@ const removeNote = (title) => {
     }
 }
 
+//Filer/Read Note
+const readFilterNote = function(title){
+    const notes = loadNotes()
+    const filteredNote = notes.find((note) => note.title.toUpperCase() === title.toUpperCase())
+    if(filteredNote){
+        console.log(chalk.magenta.inverse("Title: " + filteredNote.title + ", Body: " + filteredNote.body ))
+    }else{
+        console.log(chalk.red.inverse("No note found!"))
+    }
+}
+
 //exporting functions
 module.exports = {
     getNotes : getNotes,
     addNote : addNote,
-    removeNote : removeNote
+    removeNote : removeNote,
+    filterNote : readFilterNote
 }
