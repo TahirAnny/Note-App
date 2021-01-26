@@ -1,4 +1,5 @@
 # Note-App
 
-If you want to run the code then 
+###For running the code:
+
 [x] Clone it and run **npm install** under the root directory
